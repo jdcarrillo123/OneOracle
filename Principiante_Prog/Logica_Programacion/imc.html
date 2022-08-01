@@ -21,10 +21,11 @@
             return imc;
 
         };
-        
-      var imcCristian=calcularImc(71,1.72);
-      var imcFelipe=calcularImc(75,1.73);
-      imprimir("El promedio del IMC calculado de Cristian y felipe es: "+(imcCristian+imcFelipe)/2);
+     var nombre=prompt("Ingrese su nombre")   
+     var pesoInformado=prompt("Ingrese su peso:");
+     var alturaInformado=prompt("Infrese su altura");
+     var imcCalculado=calcularImc(pesoInformado,alturaInformado)
+      imprimir(nombre+", El IMC calculado es: "+imcCalculado);
        
     </script>
 </body>
