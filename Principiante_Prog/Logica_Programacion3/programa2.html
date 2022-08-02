@@ -29,10 +29,19 @@
         pincel.strokeStyle="black";
         pincel.strokeRect(x,y,50,50);
         }
+        /* var x=0;
+        while(x<600){
+            dibujarCuadradoVerde(x,0,"red"); 
+            dibujarCuadradoVerde(x,50,"yellow"); 
+           dibujarCuadradoVerde(x,100,"green"); 
+           x=x+50;
+        } */
+        for(var x=0;x<600;x=x+50){
+            dibujarCuadradoVerde(x,0,"red"); 
+            dibujarCuadradoVerde(x,50,"yellow"); 
+           dibujarCuadradoVerde(x,100,"green"); 
+        }
         
-        dibujarCuadradoVerde(0,0,"green");
-        dibujarCuadradoVerde(50,0,"green");
-        dibujarCuadradoVerde(100,0,"green");
     </script>
 </body>
 
