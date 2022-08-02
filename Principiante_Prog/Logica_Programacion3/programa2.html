@@ -21,20 +21,18 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
-        function dibujarCuadradoVerde(){
+        function dibujarCuadradoVerde(x,y,color){
             var pantalla=document.querySelector("canvas");
         var pincel=pantalla.getContext("2d");
-        pincel.fillStyle="green";
-        pincel.fillRect(0,0,50,50);
+        pincel.fillStyle=color
+        pincel.fillRect(x,y,50,50);
         pincel.strokeStyle="black";
-        pincel.strokeRect(0,0,50,50);
+        pincel.strokeRect(x,y,50,50);
         }
         
-    dibujarCuadradoVerde();
-        
-
-        
-       
+        dibujarCuadradoVerde(0,0,"green");
+        dibujarCuadradoVerde(50,0,"green");
+        dibujarCuadradoVerde(100,0,"green");
     </script>
 </body>
 
