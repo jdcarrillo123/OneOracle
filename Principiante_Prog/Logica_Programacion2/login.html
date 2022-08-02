@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <title>Login</title>
+</head>
+<body>
+    <div class="container mt-3 d-flex justify-content-center align-items-center">
+        <div class="card col-sm-8">
+            <div class="card-header d-flex justify-content-center">
+                <strong>Iniciar Sesión</strong>
+            </div>
+            <div class="card-body">
+                <form class="row g-3 needs-validation" novalidate>
+                    <div class="col-md-12">
+                        <label for="user_name" class="form-label">Usuario</label>
+                        <div class="input-group has-validation">
+                            
+                            <input type="text" class="form-control" id="user_name" required>
+                            <div class="invalid-feedback">
+                                por favor ingrese su usuario
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="password" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="password" required>
+                        <div class="invalid-feedback">
+                            Por favor ingrese su contraseña
+                        </div>
+                    </div>
+                    <div class="col-md-12 d-flex justify-content-start align-items-start">
+                        <input type="submit" class="btn btn-success" onclick="iniciarSesion();" value="Iniciar Sesión" >
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        var intentos=3;
+        function iniciarSesion(){
+            var usuario="alura";
+            var password="alura321";
+            const formulario=document.querySelectorAll('.needs-validation')
+            Array.from(formulario).forEach(item=>{
+                item.addEventListener('submit',event=>{
+                    event.preventDefault();
+                    if (!item.checkValidity()){
+                        Swal.fire({
+                            icon:'warning',
+                            title:'Error',
+                            text:'Complete todos los campos',
+                            showCloseButton: true,
+                            showConfirmButton: true,
+                        });
+                    }else{
+                        if (usuario== document.getElementById("user_name").value && password==document.getElementById("password").value){
+                            Swal.fire({
+                                icon:'success',
+                                title:'Bienvenido',
+                                text:'Ingreso exitoso',
+                                showCloseButton: true,
+                                showConfirmButton: true,
+                            });
+                        } else if(intentos==3){
+                            Swal.fire({
+                                icon:'error',
+                                title:'Usuario bloqueado',
+                                text:'Espere un tiempo para volver a intentarlo',
+                                showCloseButton: true,
+                                showConfirmButton: true,
+                            });
+                        } else{
+                            Swal.fire({
+                                icon:'error',
+                                title:'Datos incorrectos',
+                                text:'Inntente nuevamente',
+                                showCloseButton: true,
+                                showConfirmButton: true,
+                            });
+                            intentos+=1;
+                        }
+                    }
+                    item.classList.add('was-validated');
+                });
+            });
+        }
+        
+    </script>
+</body>
+</html>
