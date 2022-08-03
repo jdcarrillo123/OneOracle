@@ -27,6 +27,8 @@
       pincel.fillStyle = "lightgray";
       pincel.fillRect(0, 0, 600, 400);
         var radio=10;
+        var xAleatorio;
+        var yAleatorio;
       function dibujarcircunferencia(x,y,radio, color){
         pincel.fillStyle=color;
         pincel.beginPath();
@@ -36,26 +38,37 @@
       }
       function limpiarPantalla(){
         pincel.clearRect(0,0,600,400);
+        pincel.fillStyle = "lightgray";
+        pincel.fillRect(0, 0, 600, 400);
       }
       var x=0;
-      function actualizarPantalla(){
-        limpiarPantalla();
-       dibujarcircunferencia(x,20,10);
-       x++;
-      }
       function dibujarObjetivo(x,y){
-        dibujarcircunferencia(x,y,radio+20,"red");
-      dibujarcircunferencia(x,y,radio+10,"white");
-      dibujarcircunferencia(x,y,radio,"red");
-      }
-      function sortearPocision(maximo,){
-        return Math.floor(Math.random()*maximo)
-      }
-      var xAleatorio=sortearPocision(600);
-      var yAleatorio=sortearPocision(400);
-      dibujarObjetivo(xAleatorio,yAleatorio);
-      //setInterval(actualizarPantalla,50);
-     
+          dibujarcircunferencia(x,y,radio+20,"red");
+          dibujarcircunferencia(x,y,radio+10,"white");
+          dibujarcircunferencia(x,y,radio,"red");
+        }
+        function sortearPocision(maximo,){
+            return Math.floor(Math.random()*maximo)
+        }
+        
+        function actualizarPantalla(){
+            limpiarPantalla();
+            yAleatorio=sortearPocision(400);
+            xAleatorio=sortearPocision(600);
+            dibujarObjetivo(xAleatorio,yAleatorio);
+            x++;
+        }
+      
+        setInterval(actualizarPantalla,1000);
+        function disparar(evento){
+            var x= evento.pageX-pantalla.offsetLeft;
+            var y = evento.pageY-pantalla.offsetTop;
+            if((x<xAleatorio+radio)&&(x>xAleatorio-radio)&&(y<yAleatorio+radio)&&(y>yAleatorio-radio)){
+                alert("tiro certero")
+            }
+            
+        }
+        pantalla.onclick=disparar;
     
     </script>
   </body>
