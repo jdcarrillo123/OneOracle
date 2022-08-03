@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Programa 4</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <div
+      class="container mt-3 d-flex justify-content-center align-items-center"
+    >
+      <canvas width="600" height="400"> </canvas>
+    </div>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+      var pantalla = document.querySelector("canvas");
+      var pincel = pantalla.getContext("2d");
+      pincel.fillStyle = "lightgray";
+      pincel.fillRect(0, 0, 600, 400);
+        var radio=10;
+      function dibujarcircunferencia(x,y,radio, color){
+        pincel.fillStyle=color;
+        pincel.beginPath();
+        pincel.arc(x,y,radio,0,2*Math.PI);
+        pincel.fill();
+
+      }
+      function limpiarPantalla(){
+        pincel.clearRect(0,0,600,400);
+      }
+      var x=0;
+      function actualizarPantalla(){
+        limpiarPantalla();
+       dibujarcircunferencia(x,20,10);
+       x++;
+      }
+      function dibujarObjetivo(x,y){
+        dibujarcircunferencia(x,y,radio+20,"red");
+      dibujarcircunferencia(x,y,radio+10,"white");
+      dibujarcircunferencia(x,y,radio,"red");
+      }
+      function sortearPocision(maximo,){
+        return Math.floor(Math.random()*maximo)
+      }
+      var xAleatorio=sortearPocision(600);
+      var yAleatorio=sortearPocision(400);
+      dibujarObjetivo(xAleatorio,yAleatorio);
+      //setInterval(actualizarPantalla,50);
+     
+    
+    </script>
+  </body>
+</html>
