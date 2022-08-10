@@ -130,6 +130,18 @@ td,th{
 .banner{
     width: 100%;
 }
+main > p{
+    background-color: red;
+}
+img + p {
+    background-color: yellow;
+}
+img ~ p{
+    background-color: #088c19;
+}
+.principal p:not(#mision){
+    background-color: orange;
+}
 .principal{
     padding: 3em 0;
     background: #fefefe;
