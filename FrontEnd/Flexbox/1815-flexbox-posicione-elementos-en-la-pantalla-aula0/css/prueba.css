@@ -1,0 +1,13 @@
+.box {
+    height: 50px;
+    width: 50px;
+    background-color: green;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    width: 31.3%;
+  margin: 1%;
+  }
